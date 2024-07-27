@@ -10,7 +10,7 @@ public class Loan {
     //Atributos
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private LocalDate loanDate;
     private LocalDate returnDate;
