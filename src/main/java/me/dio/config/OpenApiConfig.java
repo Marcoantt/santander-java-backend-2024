@@ -6,6 +6,9 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -28,22 +31,16 @@ public class OpenApiConfig {
                         .version("1.0"));
     }
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
-            }
-        };
-    }
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
-    @Bean
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI().addServersItem(new Server().url("Sua nova URL"))
-                .addServersItem(new Server().url("http://localhost:8080"));
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+
+        source.registerCorsConfiguration("/v3/api-docs", config);
+        return new CorsFilter(source);
     }
 }
