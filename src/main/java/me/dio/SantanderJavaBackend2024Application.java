@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@OpenAPIDefinition(servers = { @Server(url = "/myapp/", description = "Default Server URL")})
+@OpenAPIDefinition(servers = { @Server(url = "http://sjb-2024-prd.up.railway.app/", description = "Default Server URL")})
 @SpringBootApplication
 public class SantanderJavaBackend2024Application {
 
