@@ -41,7 +41,6 @@ public class OpenApiConfig {
                                 
                                 I'm sorry about this, and I'm working on a solution as quickly as possible.
                                 
-                                
                                 WARNING - WARNING - WARNING
                                 
                                 
