@@ -73,7 +73,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     //Save new book on repository
     public Book saveBook(Book newBook) {
         if(bookAlreadyExists(newBook)) {
-            throw new RuntimeException("Book already exists");
+            throw new IllegalArgumentException("Book already exists");
         }
         return bookRepository.save(newBook);
     }
@@ -82,7 +82,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     //Update specific book title/author on repository
     public Book updateBook(Long id, Book newBook) {
         if(!bookRepository.existsById(id)) {
-            throw new RuntimeException("Book not found");
+            throw new IllegalArgumentException("Book not found");
         }
         newBook.setId(id);
         return bookRepository.save(newBook);
@@ -92,7 +92,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     //Delete specific book on repository
     public Book deleteBook(Long id) {
         if(!bookRepository.existsById(id)) {
-            throw new RuntimeException("Book not found");
+            throw new IllegalArgumentException("Book not found");
         }
         Book bookDeleted = bookRepository.findById(id).get();
         bookDeleted.setAvailable(false);
@@ -119,7 +119,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     @Override
     public User saveUser(User newUser) {
         if(userAlreadyExists(newUser)) {
-            throw new RuntimeException("User already exists");
+            throw new IllegalArgumentException("User already exists");
         }
         newUser.setRole("READER");
         return userRepository.save(newUser);
@@ -128,7 +128,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     @Override
     public User updateUser(Long id, User newUser) {
         if(!userRepository.existsById(id)) {
-            throw new RuntimeException("User not found");
+            throw new IllegalArgumentException("User not found");
         }
         newUser.setRole(userRepository.findById(id).get().getRole());
         newUser.setId(id);
@@ -138,7 +138,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     @Override
     public User deleteUser(Long id) {
         if(!userRepository.existsById(id)) {
-            throw new RuntimeException("User not found");
+            throw new IllegalArgumentException("User not found");
         }
         User userDeleted = userRepository.findById(id).get();
         userDeleted.setRole("DELETED");
@@ -176,7 +176,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     //Add a new loan on repository
     public Loan saveLoan(Loan newLoan) {
         if(loanAlreadyExists(newLoan)) {
-            throw new RuntimeException("Loan already exists");
+            throw new IllegalArgumentException("Loan already exists");
         }
         newLoan.setLoanDate(LocalDate.now());
         newLoan.setReturnDate(LocalDate.now().plusDays(15));
@@ -191,7 +191,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     //Add 15 days at a loan return date
     public Loan renewLoan(Long id) {
         if(!loanRepository.existsById(id)) {
-            throw new RuntimeException("Loan not found");
+            throw new IllegalArgumentException("Loan not found");
         }
         Loan loanToRenew = loanRepository.findById(id).get();
         loanToRenew.setReturnDate(LocalDate.now().plusDays(15));
@@ -201,7 +201,7 @@ public class ServiceImpl implements BookService, UserService, LoanService {
     @Override
     public Loan deleteLoan(Long id) {
         if(!loanRepository.existsById(id)) {
-            throw new RuntimeException("Loan not found");
+            throw new IllegalArgumentException("Loan not found");
         }
         Loan loanRemoved = loanRepository.findById(id).get();
         loanRemoved.getBook().setAvailable(true);
