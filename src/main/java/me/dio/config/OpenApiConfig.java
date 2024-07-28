@@ -14,6 +14,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Library Management System API")
                         .description("""
+                                
                                 This is an API made in Java using Spring Web concepts with the function
                                 of serving as a library management system.
 
