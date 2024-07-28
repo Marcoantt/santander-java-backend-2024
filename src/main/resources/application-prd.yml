@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:55059/railway
+    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:5432/railway
     username: postgres
     password: iOEknqcvVEuCrGxecMxidveIqMxlYrpb
     driver-class-name: org.postgresql.Driver
