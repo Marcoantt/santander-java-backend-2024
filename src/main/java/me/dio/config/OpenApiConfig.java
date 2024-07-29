@@ -22,7 +22,6 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Library Management System API")
                         .description("""
-                                
                                 This is an API made in Java using Spring Web concepts with the function
                                 of serving as a library management system.
 
@@ -30,22 +29,21 @@ public class OpenApiConfig {
                                 books and users, in addition to managing and improving the loan system,
                                 ensuring more effective, dynamic and simplified management.
                                 
-                                
                                 WARNING - WARNING - WARNING
                                 
-                                Swagger UI is experiencing some stability issues due to CORS incompatibility, making it unfeasible to use this application through the Swagger interface.
+                                Swagger UI is experiencing some stability issues due to CORS incompatibility,
+                                making it unfeasible to use this application through the Swagger interface.
                                 
-                                While this problem is not resolved, try using this application through Postman. All Requests necessary to use the application can be retrieved through the Swagger interface itself, but if you prefer, a Postman Collection will be made available with all available Requests.
+                                While this problem is not resolved, try using this application through Postman.
+                                All Requests necessary to use the application can be retrieved through the Swagger
+                                interface itself, but if you prefer, a Postman Collection will be made available
+                                with all available Requests.
                                 
                                 Link: https://www.postman.com/aerospace-administrator-89005134/workspace/santander-library-management-system-api/collection/37283600-953cbb31-3989-45e5-ba17-5fd240ca7572?action=share&creator=37283600
                                 
                                 I'm sorry about this, and I'm working on a solution as quickly as possible.
                                 
-                                WARNING - WARNING - WARNING
-                                
-                                
-                                
-                                """)
+                                WARNING - WARNING - WARNING""")
                         .contact(new Contact().name("Marco Antonio").email("Marcofleitepro@gmail.com").url("https://github.com/Marcoantt"))
                         .version("1.0"));
     }
